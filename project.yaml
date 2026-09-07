@@ -1,0 +1,62 @@
+name: Round-Robin Linux Kernel Scheduler
+slug: round-robin-kernel-scheduler
+
+category: software
+subcategory: "Operating Systems coursework (CS-325L)"
+
+status: completed
+
+visibility: public
+
+description:
+  short: "Replaces the Linux CFS scheduler with a custom round-robin scheduler and benchmarks it against vanilla CFS."
+  long: |
+    Recompiles the Linux kernel (6.12.25, Kali Rolling 2025.2), replacing
+    the Completely Fair Scheduler in kernel/sched/fair.c with a simplified
+    100ms-timeslice round-robin scheduler (a linked-list run queue in place
+    of CFS's red-black-tree vruntime logic), then benchmarks the modified
+    kernel against vanilla CFS using sysbench, stress-ng, and perf. Built
+    for an Operating Systems Lab (Air University, Semester 4, Spring 2025).
+
+technologies: ["Linux kernel (C)", "gcc", "make", "sysbench", "stress-ng", "perf", "Python", "bash"]
+tags: ["software", "operating-systems", "kernel", "scheduling", "linux", "benchmarking"]
+
+repository:
+  provider: github
+  visibility: public
+  sync: true
+
+portfolio:
+  enabled: true
+  featured: true
+
+documentation:
+  readme: true
+  case_study: false
+
+dates:
+  started: null
+  completed: null
+
+links:
+  github: null
+  demo: null
+  documentation: null
+
+assets:
+  hero: null
+  screenshots:
+    - screenshots
+
+achievements: []
+
+metrics:
+  - label: "perf sched latency (total, lower is better) — Round-Robin"
+    value: "896.4 ms vs 1119.7 ms (CFS)"
+    verified: true
+  - label: "sysbench fileio read throughput — Round-Robin"
+    value: "15.37 MiB/s vs 11.34 MiB/s (CFS)"
+    verified: true
+  - label: "sysbench CPU events/s — CFS (higher is better)"
+    value: "93.04 vs 76.82 (Round-Robin)"
+    verified: true
