@@ -9,17 +9,27 @@ status: completed
 visibility: public
 
 description:
-  short: "Replaces the Linux CFS scheduler with a custom round-robin scheduler and benchmarks it against vanilla CFS."
+  short: "schedsim: a C++ CPU-scheduling simulation framework (RR/priority/MLFQ/CFS-lite) validated against real Linux 6.12.25 kernel benchmark data from a hand-patched round-robin scheduler."
   long: |
-    Recompiles the Linux kernel (6.12.25, Kali Rolling 2025.2), replacing
-    the Completely Fair Scheduler in kernel/sched/fair.c with a simplified
-    100ms-timeslice round-robin scheduler (a linked-list run queue in place
-    of CFS's red-black-tree vruntime logic), then benchmarks the modified
-    kernel against vanilla CFS using sysbench, stress-ng, and perf. Built
-    for an Operating Systems Lab (Air University, Semester 4, Spring 2025).
+    Started with a real Linux kernel (6.12.25, Kali Rolling 2025.2)
+    recompiled with a hand-patched round-robin scheduler in
+    kernel/sched/fair.c, benchmarked against the unmodified kernel using
+    sysbench, stress-ng, and perf (Air University Operating Systems Lab,
+    Semester 4, Spring 2025) -- real, one-off, unrepeatable work, preserved
+    unmodified under archive/academic-original/ and validation/kernel-6.12.25/.
+    Added schedsim: a reusable discrete-event C++ simulation framework
+    implementing round-robin, fixed-priority (with aging), OSTEP-style
+    MLFQ (with the exact allotment-based anti-gaming rule), and a
+    classic-CFS approximation (Linux's real nice-to-weight table), whose
+    scheduler-level findings (fairness, scheduling delay) are checked
+    against the real kernel measurement using an explicit three-tier
+    methodology (direct / qualitative-direction-only / not-comparable) --
+    including one honestly-reported discordant finding, not a forced match.
+    Corrects a factual note from the original report: a 6.12 kernel's fair
+    scheduling class is EEVDF-era, not classic CFS.
 
-technologies: ["Linux kernel (C)", "gcc", "make", "sysbench", "stress-ng", "perf", "Python", "bash"]
-tags: ["software", "operating-systems", "kernel", "scheduling", "linux", "benchmarking"]
+technologies: ["Linux kernel (C)", "gcc", "make", "sysbench", "stress-ng", "perf", "C++20", "CMake", "Catch2"]
+tags: ["software", "operating-systems", "kernel", "scheduling", "linux", "benchmarking", "discrete-event-simulation", "cli-tool"]
 
 repository:
   provider: github
@@ -51,12 +61,21 @@ assets:
 achievements: []
 
 metrics:
-  - label: "perf sched latency (total, lower is better) — Round-Robin"
-    value: "896.4 ms vs 1119.7 ms (CFS)"
+  - label: "perf sched latency (total, lower is better) — Round-Robin (real kernel)"
+    value: "896.4 ms vs 1119.7 ms (fair scheduler)"
     verified: true
-  - label: "sysbench fileio read throughput — Round-Robin"
-    value: "15.37 MiB/s vs 11.34 MiB/s (CFS)"
+  - label: "sysbench fileio read throughput — Round-Robin (real kernel)"
+    value: "15.37 MiB/s vs 11.34 MiB/s (fair scheduler)"
     verified: true
-  - label: "sysbench CPU events/s — CFS (higher is better)"
+  - label: "sysbench CPU events/s — fair scheduler (real kernel, higher is better)"
     value: "93.04 vs 76.82 (Round-Robin)"
+    verified: true
+  - label: "schedsim unit tests passing (Catch2)"
+    value: "133/133 assertions (24 test cases)"
+    verified: true
+  - label: "schedsim vs. real kernel: concordant/discordant/not-comparable findings"
+    value: "1 concordant, 1 discordant, 2 not-comparable (see sim/README.md)"
+    verified: true
+  - label: "CfsLite proportional-share accuracy vs. theoretical calculation (nice-mix workload)"
+    value: "within 0.2% (3360 simulated vs. 3356 theoretical)"
     verified: true

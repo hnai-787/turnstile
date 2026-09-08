@@ -1,0 +1,31 @@
+{
+  "reference": {
+    "type": "real-kernel-measurement",
+    "kernel_version": "6.12.25",
+    "distribution": "Kali Rolling 2025.2",
+    "environment": "single VM, uncontrolled host noise",
+    "repetitions": 1
+  },
+  "round_robin": {
+    "quantum_ms": 100,
+    "implementation": "patched kernel/sched/fair.c (pick_next_task_fair / enqueue_task_fair / dequeue_task_fair / task_tick_fair replaced with a linked-list run queue), CFS/EEVDF vruntime logic removed"
+  },
+  "baseline": {
+    "scheduler_class": "linux-fair (EEVDF-era as of 6.6+)",
+    "note": "The original project's README and report call this baseline 'CFS'. That is the traditional name for Linux's fair scheduling class but is not fully accurate for 6.12: Linux transitioned fair-class task selection to EEVDF (pick_eevdf, virtual deadlines) starting in 6.6. The measured data is unaffected; only the baseline's name/description needed correcting. See README.md in this directory."
+  },
+  "measured_metrics": [
+    "sysbench CPU events/s",
+    "stress-ng CPU bogo-ops/s",
+    "perf sched latency (total ms, avg/max delay per task)",
+    "sysbench fileio read throughput (MiB/s)",
+    "top snapshot CPU% distribution across yes processes"
+  ],
+  "limitations": [
+    "single historical run, no repetitions",
+    "virtualized environment (host contention, timer virtualization)",
+    "uncontrolled OS/background-process noise",
+    "no statistical confidence intervals",
+    "hardware/platform effects (cache, migration, interrupts, I/O stack) are entangled with scheduler-algorithm effects and cannot be separated post hoc"
+  ]
+}
