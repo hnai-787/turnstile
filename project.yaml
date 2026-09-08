@@ -1,5 +1,5 @@
-name: Round-Robin Linux Kernel Scheduler
-slug: round-robin-kernel-scheduler
+name: schedsim
+slug: schedsim
 
 category: software
 subcategory: "Operating Systems coursework (CS-325L)"

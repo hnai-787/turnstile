@@ -1,4 +1,4 @@
-# Round-Robin Linux Kernel Scheduler + schedsim (Scheduler Simulation Framework)
+# schedsim — Scheduler Simulation Framework + Round-Robin Kernel Benchmark
 
 ## Course Information
 
