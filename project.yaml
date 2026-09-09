@@ -54,7 +54,7 @@ links:
   documentation: null
 
 assets:
-  hero: null
+  hero: assets/brand/schedsim-readme-banner.png
   screenshots:
     - screenshots
 

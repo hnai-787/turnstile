@@ -1,5 +1,8 @@
 # schedsim — Scheduler Simulation Framework + Round-Robin Kernel Benchmark
 
+![schedsim banner](assets/brand/schedsim-readme-banner.png)
+
+
 ## Course Information
 
 | Field | Details |
@@ -90,6 +93,10 @@ approximation, not a claim to model 6.12's actual EEVDF behavior.
    its scheduler-level (not platform-level) findings against it using an
    explicit three-tier methodology (direct / qualitative-direction-only /
    not-comparable) — see `sim/README.md` "Historical validation".
+
+## How It Works
+
+![How schedsim works](assets/brand/schedsim-how-it-works.png)
 
 ## Repository Structure
 
