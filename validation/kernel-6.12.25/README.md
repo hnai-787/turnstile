@@ -6,7 +6,7 @@ Rolling 2025.2) with `kernel/sched/fair.c` patched to a round-robin
 scheduler, booting it in a VM, and running the same benchmark suite
 (sysbench CPU/fileio, stress-ng, `perf sched latency`, a `top` snapshot)
 against both the patched kernel and the unmodified one. See
-`archive/academic-original/` for the original patch source and benchmark
+`archive/original/` for the original patch source and benchmark
 scripts that produced this data, and the workspace root README for the
 full, honest interpretation.
 

@@ -40,7 +40,7 @@ measurement data -- to validate it, rather than leaving the simulator
 with zero empirical grounding like most classroom scheduler simulators.
 
 The original patch, benchmark scripts, and report were archived unmodified
-under `archive/academic-original/`; the real measured results were copied
+under `archive/original/`; the real measured results were copied
 (not moved) into `validation/kernel-6.12.25/` as an explicitly immutable
 historical reference, separate from anything the simulator generates.
 

@@ -2,7 +2,7 @@ name: Turnstile
 slug: turnstile
 
 category: software
-subcategory: "Operating Systems coursework (CS-325L)"
+subcategory: "Operating Systems"
 
 status: completed
 
@@ -14,9 +14,8 @@ description:
     Started with a real Linux kernel (6.12.25, Kali Rolling 2025.2)
     recompiled with a hand-patched round-robin scheduler in
     kernel/sched/fair.c, benchmarked against the unmodified kernel using
-    sysbench, stress-ng, and perf (Air University Operating Systems Lab,
-    Semester 4, Spring 2025) -- real, one-off, unrepeatable work, preserved
-    unmodified under archive/academic-original/ and validation/kernel-6.12.25/.
+    sysbench, stress-ng, and perf -- real, one-off, unrepeatable work, preserved
+    unmodified under archive/original/ and validation/kernel-6.12.25/.
     Added schedsim: a reusable discrete-event C++ simulation framework
     implementing round-robin, fixed-priority (with aging), OSTEP-style
     MLFQ (with the exact allotment-based anti-gaming rule), and a

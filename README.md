@@ -5,19 +5,10 @@
 *Ships as the `schedsim` CLI/library — see below.*
 
 
-## Course Information
-
-| Field | Details |
-|---|---|
-| Course | Operating Systems Lab (CS-325L) |
-| Semester | Semester 4 — Spring 2025 |
-| University | Air University, Islamabad |
-| Students | Hussain Ali (232095), Syed Jazib Ali Rizvi (232145), Sardar Ahmad Ali (232147), Sardar Shahbaz (232089) |
-
 ## Overview
 
 This project has two parts now. The **original, unmodified work**
-(preserved under `archive/academic-original/`) recompiled the Linux
+(preserved under `archive/original/`) recompiled the Linux
 kernel (6.12.25, Kali Rolling 2025.2), replacing the fair scheduling
 class in `kernel/sched/fair.c` with a simplified round-robin scheduler,
 then benchmarked the modified kernel against the unmodified one. That's
@@ -67,7 +58,7 @@ approximation, not a claim to model 6.12's actual EEVDF behavior.
 ## Tools and Technologies
 
 - Linux kernel source (C), gcc/make; sysbench, stress-ng, `perf sched
-  latency`; Python/bash *(original benchmarking work — see `archive/academic-original/`)*
+  latency`; Python/bash *(original benchmarking work — see `archive/original/`)*
 - C++20, CMake, Catch2 *(the new `sim/` simulation framework)*
 
 ## Features
@@ -75,7 +66,7 @@ approximation, not a claim to model 6.12's actual EEVDF behavior.
 - A working round-robin scheduler patch (`RR_TIMESLICE` = 100ms) replacing
   `pick_next_task_fair` / `enqueue_task_fair` / `dequeue_task_fair` /
   `task_tick_fair`, with the fair class's vruntime/red-black-tree logic removed.
-- A benchmark harness (`archive/academic-original/benchmarks/kernelTest.py`)
+- A benchmark harness (`archive/original/benchmarks/kernelTest.py`)
   running sysbench CPU/fileio, stress-ng, `perf sched latency`, and a `top` snapshot under load.
 - **New:** `sim/`, a discrete-event simulator implementing round-robin,
   fixed-priority (with aging), OSTEP-style MLFQ (with the exact
@@ -107,7 +98,7 @@ round-robin-kernel-scheduler/
   README.md, PROJECT_NOTES.md, CHANGELOG.md, project.yaml
   sim/                          NEW: the C++ scheduling simulation framework (see sim/README.md)
   validation/kernel-6.12.25/    NEW: immutable real kernel measurement + provenance manifest
-  archive/academic-original/    the original patch, benchmark scripts, and report, untouched
+  archive/original/    the original patch, benchmark scripts, and report, untouched
     scheduler-source/  fair_original.c, fair_modified.c
     benchmarks/        kernel_baseline_test.sh, kernelTest.py, evaluate.c
     docs/              kernel-round-robin-scheduler-report.docx/.pdf
@@ -122,7 +113,7 @@ on a primary machine.
 
 ```bash
 # inside a Linux kernel source tree, after applying the diff between
-# archive/academic-original/scheduler-source/fair_original.c and fair_modified.c
+# archive/original/scheduler-source/fair_original.c and fair_modified.c
 # to kernel/sched/fair.c
 make -j$(nproc)
 make modules_install && make install
@@ -134,8 +125,8 @@ reboot
 Original kernel benchmarking:
 
 ```bash
-sudo bash archive/academic-original/benchmarks/kernel_baseline_test.sh
-python archive/academic-original/benchmarks/kernelTest.py --compare
+sudo bash archive/original/benchmarks/kernel_baseline_test.sh
+python archive/original/benchmarks/kernelTest.py --compare
 ```
 
 New simulation framework (see `sim/README.md` for full usage):
@@ -149,7 +140,7 @@ cd sim && ./build.sh
 ## How to Review
 
 1. Start with this README, then `sim/README.md` for the new framework.
-2. Diff `archive/academic-original/scheduler-source/fair_original.c`
+2. Diff `archive/original/scheduler-source/fair_original.c`
    against `fair_modified.c` to see exactly what changed in the real kernel.
 3. Read the raw historical results under `validation/kernel-6.12.25/`.
 4. Run `schedsim validate` (in `sim/`) and compare its output against the
@@ -202,7 +193,7 @@ parameters until it agreed, per the research this rebuild was grounded in.
 
 ## Limitations
 
-- Coursework-level prototype — not tuned or hardened for production use.
+- early-stage prototype — not tuned or hardened for production use.
 - Benchmarked on a single VM configuration, one run, no repetitions or
   confidence intervals; results may vary by hardware and workload mix.
   See `validation/kernel-6.12.25/environment.json` for the full,
@@ -230,6 +221,6 @@ parameters until it agreed, per the research this rebuild was grounded in.
 
 ## Ethical Notice
 
-Academic coursework exercise; no ethical concerns apply. The safety note
+Personal project; no ethical concerns apply. The safety note
 above is a technical caution (a bad kernel scheduler patch can make a
 machine unresponsive), not an ethics concern.
