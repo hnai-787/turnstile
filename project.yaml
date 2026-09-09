@@ -1,5 +1,5 @@
-name: schedsim
-slug: schedsim
+name: Turnstile
+slug: turnstile
 
 category: software
 subcategory: "Operating Systems coursework (CS-325L)"
@@ -49,12 +49,12 @@ dates:
   completed: null
 
 links:
-  github: https://github.com/Hussain-Ali-787/schedsim
+  github: https://github.com/Hussain-Ali-787/turnstile
   demo: null
   documentation: null
 
 assets:
-  hero: assets/brand/schedsim-readme-banner.png
+  hero: assets/brand/turnstile-readme-banner.png
   screenshots:
     - screenshots
 

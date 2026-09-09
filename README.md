@@ -1,6 +1,8 @@
-# schedsim — Scheduler Simulation Framework + Round-Robin Kernel Benchmark
+# Turnstile — Scheduler Simulation Framework
 
-![schedsim banner](assets/brand/schedsim-readme-banner.png)
+![turnstile banner](assets/brand/turnstile-readme-banner.png)
+
+*Ships as the `schedsim` CLI/library — see below.*
 
 
 ## Course Information
@@ -96,7 +98,7 @@ approximation, not a claim to model 6.12's actual EEVDF behavior.
 
 ## How It Works
 
-![How schedsim works](assets/brand/schedsim-how-it-works.png)
+![How turnstile works](assets/brand/turnstile-how-it-works.png)
 
 ## Repository Structure
 
