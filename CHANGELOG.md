@@ -9,7 +9,18 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 
 ### Changed
 
+- Removed the top-level `scheduler-source/`, `benchmarks/`, and `docs/`
+  folders -- confirmed byte-identical duplicates of their
+  `archive/original/` copies (which the README's own reproduction
+  commands actually reference) and unreferenced anywhere else.
+  `archive/original/` and `results/` are untouched: both are actively
+  referenced by the README's documented commands and benchmark claims.
+
 ### Fixed
+
+- README's Repository Structure still said
+  `round-robin-kernel-scheduler/` from before the product-name rebrand;
+  corrected to `turnstile/`.
 
 ## [1.0.0] - 2026-09-08
 

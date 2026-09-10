@@ -94,7 +94,7 @@ approximation, not a claim to model 6.12's actual EEVDF behavior.
 ## Repository Structure
 
 ```text
-round-robin-kernel-scheduler/
+turnstile/
   README.md, PROJECT_NOTES.md, CHANGELOG.md, project.yaml
   sim/                          NEW: the C++ scheduling simulation framework (see sim/README.md)
   validation/kernel-6.12.25/    NEW: immutable real kernel measurement + provenance manifest
